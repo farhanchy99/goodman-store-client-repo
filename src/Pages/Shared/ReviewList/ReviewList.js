@@ -1,20 +1,18 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext, useEffect, useState } from 'react';
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-const MyReviews = () => {
-    const { user } = useContext(AuthContext);
-    const [myReviews, setMyReviews] = useState([]);
+const ReviewList = () => {
+    const [reviewList, setReviewList] = useState([]);
+    const{_id} = useLoaderData();
     
     useEffect( () =>{
-        fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
+        fetch(`http://localhost:5000/reviews?service=${_id}`)
         .then(res =>res.json())
-        .then(data => setMyReviews(data))
+        .then(data => setReviewList(data))
     }, []);
     return (
         <div>
-            <h1>My Review List</h1>
+            <h1>Review List</h1>
             <div className="overflow-x-auto w-full text-black">
             <table className="table w-full">
                 <thead>
@@ -28,7 +26,7 @@ const MyReviews = () => {
 
                 <tbody>
                     {
-                        myReviews.map(row => 
+                        reviewList.map(row => 
                         <tr key={row._id}>
                             <td>
                             <div className="flex items-center space-x-3">
@@ -49,12 +47,6 @@ const MyReviews = () => {
                             <span className="badge badge-ghost badge-sm">{row._id}</span>
                             </td>
                             <td>{row.message}</td>
-                            
-                            <th>
-                                <label>
-                                    <button><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></button>
-                                </label>
-                            </th>
                         </tr>)
                     }
                 </tbody>
@@ -64,4 +56,4 @@ const MyReviews = () => {
     );
 };
 
-export default MyReviews;
+export default ReviewList;
