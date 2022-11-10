@@ -49,7 +49,7 @@ const AddServices = () => {
             <h1 className='text-4xl font-bold my-10 text-center'>Add Services</h1>
             <p className='text-center'>Add your services here</p>
             <form onSubmit={handleSer}>
-                <div className=' w-1/2 m-auto'>
+                <div className='w-4/5 lg:w-1/2 m-auto'>
                 <div className='flex my-10 justify-between'>
                     <input name="serName" type="text" placeholder="Service Name" className="input input-bordered w-full max-w-xs backdrop-blur-sm bg-white/30" required/>
                     <input name="serPrice" type="text" placeholder="Price" className="input input-bordered w-full max-w-xs backdrop-blur-sm bg-white/30" required/>

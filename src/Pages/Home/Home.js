@@ -71,7 +71,7 @@ const Home = () => {
             <div className="hero">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <img src={games} className="w-80 rounded-lg shadow-2xl" alt='album'/>
-                    <div className='text-left md:text-center lg:text-center'>
+                    <div className='text-center lg:text-left'>
                     <h1 className="text-5xl font-bold">GAME TOP UP</h1>
                     <p className="py-6 sm: w-full lg:w-9/12">With a wide variety of game top-up selections, you can never miss any new game top-up available in GoodMan Gaming Services. I will strive to bring you the latest and most popular game top-ups available on the market. So Join with me...!!!</p>
                     <button className="btn btn-info shadow-lg shadow-cyan-500/50"><Link to={'/login'}>Join Now</Link></button>

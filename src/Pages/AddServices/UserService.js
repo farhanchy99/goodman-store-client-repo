@@ -16,7 +16,7 @@ const UserService = () => {
         <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center my-10'>
             {
                 userService.map(userSer =>
-                <div className="card w-96 backdrop-blur-sm bg-white/30 shadow-xl" key={userSer._id}>
+                <div className="card w-80 md:w-80 lg:w-96 backdrop-blur-sm bg-white/30 shadow-xl" key={userSer._id}>
                 <figure><img src={userSer.img} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{userSer.title}</h2>
