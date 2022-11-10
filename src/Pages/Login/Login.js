@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import login from '../../assets/squad.jpg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import swal from "sweetalert";
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
@@ -14,6 +14,7 @@ const Login = () => {
     const [error, setError] = useState('')
     const {logIn, providerLogin} = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider();
+    const gitHubProvider = new GithubAuthProvider()
     const navigate = useNavigate();
     const location = useLocation();
     useTitle('Log In');
@@ -36,6 +37,15 @@ const Login = () => {
               });
             setError(error);
         });
+    }
+
+    const handleGitHubSignIn = () =>{
+        providerLogin(gitHubProvider)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
     }
 
     const handleSubmit = event =>{
@@ -106,7 +116,7 @@ const Login = () => {
                     </form>
                     <div className='card-body pt-0'>
                         <button onClick={handleGoogleSignIn} className="btn btn-warning w-full mb-5 text-white"><FontAwesomeIcon icon={faGoogle} className="mr-5"></FontAwesomeIcon> Google</button>
-                        <button className="btn btn-success w-full text-white"><FontAwesomeIcon icon={faGithub} className="mr-5"></FontAwesomeIcon> Github</button>
+                        <button onClick={handleGitHubSignIn} className="btn btn-success w-full text-white"><FontAwesomeIcon icon={faGithub} className="mr-5"></FontAwesomeIcon> Github</button>
                     </div>
                     </div>
                 </div>
