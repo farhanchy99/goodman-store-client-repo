@@ -15,14 +15,14 @@ const MyReviews = () => {
         })
 
         .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    return logOut();
-                }
-                return res.json();
-            })
-            .then(data => {
-                setMyReviews(data);
-            })
+            if (res.status === 401 || res.status === 403) {
+                return logOut();
+            }
+            return res.json();
+        })
+        .then(data => {
+            setMyReviews(data);
+        })
     }, [user?.email, logOut]);
 
     const handleDelete = id =>{
