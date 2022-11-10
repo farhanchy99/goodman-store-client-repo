@@ -66,7 +66,7 @@ const Login = () => {
             swal({
                 title: "Unsuccessfully Log In",
                 button: "OK",
-                icon: "danger"
+                icon: "error"
               });
             setError(error.message);
         })

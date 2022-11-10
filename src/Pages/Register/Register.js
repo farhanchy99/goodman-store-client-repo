@@ -46,7 +46,7 @@ const Register = () => {
             swal({
                 title: "Unsuccessfully Registered",
                 button: "OK",
-                icon: "danger"
+                icon: "error"
               });
             setError(e.message);
         })

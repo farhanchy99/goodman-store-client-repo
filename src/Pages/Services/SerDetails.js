@@ -4,6 +4,7 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import moment from 'moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import swal from "sweetalert";
 import ReviewList from '../Shared/ReviewList/ReviewList';
 import useTitle from '../../Hooks/useTitle';
 
@@ -43,16 +44,11 @@ const SerDetails = () => {
         .then(data => {
             console.log(data)
             if(data.acknowledged){
-                toast.success('Reviewed Successfully',{
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                })
+                swal({
+                    title: "Successfully Reviewed",
+                    button: "OK",
+                    icon: "success"
+                  });
                 form.reset();
             }
         })

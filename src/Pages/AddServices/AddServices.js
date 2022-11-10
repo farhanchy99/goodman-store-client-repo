@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import moment from 'moment';
 import UserService from './UserService';
+import swal from "sweetalert";
 import useTitle from '../../Hooks/useTitle';
 
 const AddServices = () => {
@@ -40,7 +41,11 @@ const AddServices = () => {
         .then(data => {
             console.log(data)
             if(data.acknowledged){
-                alert('Service Added Successfully')
+                swal({
+                    title: "Successfully Registered",
+                    button: "OK",
+                    icon: "success"
+                  });
                 form.reset();
             }
         })
