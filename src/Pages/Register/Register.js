@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import swal from "sweetalert";
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 
@@ -31,23 +32,22 @@ const Register = () => {
             form.reset();
             setError('');
             navigate("/");
-            toast.success('Registered Successfully',{
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            })
+            swal({
+                title: "Successfully Registered",
+                button: "OK",
+                icon: "success"
+              });
             const profile ={ displayName: name, photoURL:photoURL};
             updateUserProfile(profile)
             .then(()=>{})
             .catch( e => console.error(e));
         })
         .catch(e => {
-            console.error(e);
+            swal({
+                title: "Unsuccessfully Registered",
+                button: "OK",
+                icon: "danger"
+              });
             setError(e.message);
         })
     }

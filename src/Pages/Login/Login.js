@@ -6,6 +6,7 @@ import login from '../../assets/squad.jpg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleAuthProvider } from 'firebase/auth';
+import swal from "sweetalert";
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 
@@ -54,29 +55,19 @@ const Login = () => {
             setError('');
             form.reset();
             navigate(from, {replace: true});
-            toast.success('Reviewed Successfully',{
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            })
+            swal({
+                title: "Successfully Login",
+                button: "OK",
+                icon: "success"
+              });
         })
         .catch(error => {
             console.error(error);
-            toast.error('Login Unsuccessful!!!', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            });
+            swal({
+                title: "Unsuccessfully Log In",
+                button: "OK",
+                icon: "danger"
+              });
             setError(error.message);
         })
     }
