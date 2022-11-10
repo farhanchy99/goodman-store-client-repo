@@ -14,7 +14,7 @@ const Header = () => {
     }
     return (
         <div className='backdrop-blur-sm bg-white/30'>
-            <div className="container navbar m-auto px-20">
+            <div className="container navbar m-auto px-4 lg:px-20">
                 <div className="navbar-start">
                     <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -27,9 +27,9 @@ const Header = () => {
                         <li className='mb-5'><NavLink to='/blog'>Blog</NavLink></li>
                     </ul>
                     </div>
-                    <NavLink className='text-2xl text-gray-900 font-semibold' to='/'>
+                    <NavLink className='text-2xl text-gray-900 font-semibold flex items-center' to='/'>
                         <img src={logo} alt="logo" className='w-7 d-block m-auto'/>
-                        <p className='text-xs text-white'>GoodMan Gaming</p>
+                        <p className='text-xs text-white ml-1.5 lg:ml-2.5'>GoodMan Gaming</p>
                     </NavLink>
                 </div>
                 <div className="navbar-center hidden lg:flex">
