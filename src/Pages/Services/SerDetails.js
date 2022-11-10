@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import moment from 'moment';
 import ReviewList from '../Shared/ReviewList/ReviewList';
 
 const SerDetails = () => {
@@ -20,6 +21,7 @@ const SerDetails = () => {
             serviceName: title,
             price,
             email,
+            time:moment().format('LT'),
             img: img,
             customer: name,
             message
@@ -57,7 +59,6 @@ const SerDetails = () => {
                                     <h2 className="card-title text-2xl font-bold">{title}</h2>
                                     <p>{about}</p>
                                 </div>
-                                <p className='text-lg font-semibold'>Ratings: {rating}</p>
                                 <p className='text-lg font-semibold'>Price: {price}</p>
                             </div>
                             </div>
@@ -72,9 +73,9 @@ const SerDetails = () => {
                             <h1 className='text-4xl font-bold my-10 text-center'>Give a Review</h1>
                             <form onSubmit={handleReview} className=' w-1/2 m-auto'>
                                 <div className="form-control my-10">
-                                <textarea name="message" className="textarea textarea-bordered backdrop-blur-sm bg-white/30" placeholder="Bio" required></textarea>
+                                <textarea name="message" className="textarea textarea-bordered backdrop-blur-sm bg-white/30" placeholder="Review Please" required></textarea>
                                 </div>
-                                <button className='btn btn-info float-right mb-10' type='submit'>Review</button>
+                                <button className='btn btn-info mb-10' type='submit'>Review</button>
                             </form>
                         
                         </>

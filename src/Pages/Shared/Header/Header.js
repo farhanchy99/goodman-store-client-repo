@@ -22,7 +22,7 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="nav menu-compact dropdown-content mt-3 p-2 shadow bg-amber-400 rounded-box w-52 text-center">
                         <li className='mb-5'><NavLink to='/' className={({isActive})=> isActive ? 'active' : undefined} end>Home</NavLink></li>
-                        <li className='mb-5'><NavLink to='/courses'>Courses</NavLink></li>
+                        <li className='mb-5'><NavLink to='/services'>Courses</NavLink></li>
                         <li className='mb-5'><NavLink to='/faq'>FAQ</NavLink></li>
                         <li className='mb-5'><NavLink to='/blog'>Blog</NavLink></li>
                     </ul>
@@ -41,7 +41,7 @@ const Header = () => {
                         
                         <>
                         <li className='ml-5'><NavLink to='/addservices'>Add Services</NavLink></li>
-                        <li className='ml-5'><NavLink to='/myreviews'>My Reviews</NavLink></li>
+                        <li className='ml-5'><NavLink to='/reviewslist'>My Reviews</NavLink></li>
                         
                         </>
                         : 

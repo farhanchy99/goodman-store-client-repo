@@ -38,12 +38,12 @@ const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path: '/myreviews',
+                path: '/reviewslist',
                 element: <PrivateRoutes><MyReviews></MyReviews></PrivateRoutes>
             },
             {
                 path: '/addservices',
-                element: <PrivateRoutes><AddServices></AddServices></PrivateRoutes>
+                element: <PrivateRoutes><AddServices></AddServices></PrivateRoutes>,
             },
             {
                 path: '/services/:id',

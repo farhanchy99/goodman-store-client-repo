@@ -12,6 +12,20 @@ const MyReviews = () => {
         .then(res =>res.json())
         .then(data => setMyReviews(data))
     }, []);
+
+    const handleDelete = id =>{
+        const agree = window.confirm (`Are you sure want to delete?`)
+
+        if(agree){
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data =>{
+                console.log(data);
+            })
+        }
+    }
     return (
         <div>
             <h1>My Review List</h1>
@@ -46,13 +60,13 @@ const MyReviews = () => {
                             <td>
                             {row.serviceName}
                             <br/>
-                            <span className="badge badge-ghost badge-sm">{row._id}</span>
+                            <span className="badge badge-ghost badge-sm">{row.service}</span>
                             </td>
                             <td>{row.message}</td>
                             
                             <th>
                                 <label>
-                                    <button><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></button>
+                                    <button onClick={() => handleDelete(row._id)}><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></button>
                                 </label>
                             </th>
                         </tr>)

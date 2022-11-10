@@ -20,7 +20,6 @@ const ReviewList = () => {
                     <th>Users</th>
                     <th>Service ID</th>
                     <th>Reviews</th>
-                    <th></th>
                 </tr>
                 </thead>
 
