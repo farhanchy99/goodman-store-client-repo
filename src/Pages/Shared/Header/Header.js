@@ -20,9 +20,9 @@ const Header = () => {
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex={0} className="nav menu-compact dropdown-content mt-3 p-2 shadow bg-amber-400 rounded-box w-52 text-center">
+                    <ul tabIndex={0} className="nav menu-compact dropdown-content mt-3 p-2 shadow backdrop-blur-sm bg-white/30 rounded-box w-52 text-center">
                         <li className='mb-5'><NavLink to='/' className={({isActive})=> isActive ? 'active' : undefined} end>Home</NavLink></li>
-                        <li className='mb-5'><NavLink to='/services'>Courses</NavLink></li>
+                        <li className='mb-5'><NavLink to='/services'>services</NavLink></li>
                         <li className='mb-5'><NavLink to='/faq'>FAQ</NavLink></li>
                         <li className='mb-5'><NavLink to='/blog'>Blog</NavLink></li>
                     </ul>
@@ -32,6 +32,7 @@ const Header = () => {
                         <p className='text-xs text-white ml-1.5 lg:ml-2.5'>GoodMan Gaming</p>
                     </NavLink>
                 </div>
+
                 <div className="navbar-center hidden lg:flex">
                     <ul className="nav menu-horizontal">
                         <li className='ml-5'><NavLink to='/' className={({isActive})=> isActive ? 'active' : undefined} end>Home</NavLink></li>
