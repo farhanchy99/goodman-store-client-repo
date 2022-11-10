@@ -8,7 +8,7 @@ const ReviewList = () => {
     const { logOut } = useContext(AuthContext);
     
     useEffect( () =>{
-        fetch(`http://localhost:5000/reviews?service=${_id}`)
+        fetch(`https://goodman-gaming-server.vercel.app/reviews?service=${_id}`)
         .then(res =>res.json())
         .then(data => setReviewList(data))
     }, [_id, logOut]);

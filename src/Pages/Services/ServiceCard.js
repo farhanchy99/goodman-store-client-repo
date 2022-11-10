@@ -7,7 +7,7 @@ const ServiceCard = () => {
     const [services, setServices] = useState([]);
     
     useEffect( () =>{
-        fetch(`http://localhost:5000/services`)
+        fetch(`https://goodman-gaming-server.vercel.app/services`)
         .then(res =>res.json())
         .then(data => setServices(data))
         console.log(services)

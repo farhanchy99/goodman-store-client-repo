@@ -10,7 +10,7 @@ const MyReviews = () => {
     useTitle('My Reviews');
     
     useEffect( () =>{
-        fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
+        fetch(`https://goodman-gaming-server.vercel.app/myreviews?email=${user?.email}`)
         .then(res =>res.json())
         .then(data => setMyReviews(data))
     }, [user?.email]);
@@ -19,7 +19,7 @@ const MyReviews = () => {
         const agree = window.confirm (`Are you sure want to delete?`)
 
         if(agree){
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://goodman-gaming-server.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

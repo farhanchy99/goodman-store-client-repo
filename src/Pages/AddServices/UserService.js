@@ -7,7 +7,7 @@ const UserService = () => {
     const [userService, setUserService] = useState([]);
     
     useEffect( () =>{
-        fetch(`http://localhost:5000/myservices?email=${user?.email}`)
+        fetch(`https://goodman-gaming-server.vercel.app/myservices?email=${user?.email}`)
         .then(res =>res.json())
         .then(data => setUserService(data))
     }, [user?.email, logOut]);
