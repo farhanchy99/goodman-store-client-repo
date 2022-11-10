@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import moment from 'moment';
 import UserService from './UserService';
+import useTitle from '../../Hooks/useTitle';
 
 const AddServices = () => {
     const {user} = useContext(AuthContext)
+    useTitle('Add Services');
 
     const handleSer = event =>{
         event.preventDefault();

@@ -1,14 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruckFast, faComments, faHandshake, faMoneyCheckDollar } from '@fortawesome/free-solid-svg-icons'
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../Banner/Banner';
 import games from '../../assets/games.jpg'
-import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const Home = () => {
-    const { user } = useContext(AuthContext);
+    
     const [showServices, setShowServices] = useState([]);
+
+    useTitle('Home');
     
     useEffect( () =>{
         fetch(`http://localhost:5000/services`)

@@ -2,10 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect, useState } from 'react';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);
+    useTitle('My Reviews');
     
     useEffect( () =>{
         fetch(`http://localhost:5000/myreviews?email=${user?.email}`)

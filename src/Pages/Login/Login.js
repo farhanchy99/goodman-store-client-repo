@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const Login = () => {
     const [error, setError] = useState('')
@@ -14,6 +15,7 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
     const location = useLocation();
+    useTitle('Log In');
 
     const from = location.state?.from?.pathname|| "/";
 
