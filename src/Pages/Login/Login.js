@@ -43,6 +43,13 @@ const Login = () => {
         providerLogin(gitHubProvider)
         .then(result=>{
             const user = result.user;
+            swal({
+                title: "Successfully Login",
+                button: "OK",
+                icon: "success"
+              });
+            setError("");
+            navigate(from, {replace: true});
             console.log(user);
         })
         .catch(error => console.error(error))

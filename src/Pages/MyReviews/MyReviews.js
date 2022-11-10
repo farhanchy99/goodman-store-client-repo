@@ -30,7 +30,7 @@ const MyReviews = () => {
     }
     return (
         <div>
-            <h1 className='text-4xl font-bold my-10 text-center'>Service Details</h1>
+            <h1 className='text-4xl font-bold my-10 text-center'>My Reviews</h1>
             <div className="overflow-x-auto w-11/12 m-auto text-black">
             <table className="table w-full">
                 <thead>
