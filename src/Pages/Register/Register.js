@@ -1,7 +1,8 @@
 import register from '../../assets/alone.jpg'
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import swal from "sweetalert";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
@@ -27,11 +28,16 @@ const Register = () => {
             form.reset();
             setError('');
             navigate("/");
-            swal({
-                title: "Registered Successfully",
-                button: "OK",
-                icon: "success"
-              });
+            toast.success('Registered Successfully',{
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
             const profile ={ displayName: name, photoURL:photoURL};
             updateUserProfile(profile)
             .then(()=>{})
@@ -81,6 +87,7 @@ const Register = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-info text-white">Register</button>
+                            <ToastContainer/>
                         </div>
                         <p className='text-rose-700'>{error}</p>
                         <p>Already have Account?<Link to={'/login'} className="text-lime-300"> Login</Link></p>

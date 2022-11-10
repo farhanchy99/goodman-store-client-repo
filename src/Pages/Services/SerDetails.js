@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import moment from 'moment';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ReviewList from '../Shared/ReviewList/ReviewList';
 
 const SerDetails = () => {
-    const{_id, title, price, about, rating, img} = useLoaderData();
+    const{_id, title, price, about, img} = useLoaderData();
     const {user} = useContext(AuthContext)
 
     const handleReview = event =>{
@@ -38,7 +40,16 @@ const SerDetails = () => {
         .then(data => {
             console.log(data)
             if(data.acknowledged){
-                alert('Reviewed Successfully')
+                toast.success('Reviewed Successfully',{
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                })
                 form.reset();
             }
         })
@@ -48,13 +59,13 @@ const SerDetails = () => {
     return (
         <div className='container m-auto'>
             <div className=''>
-                <div className='w-9/12 m-auto '>
+                <div className='w-4/5 lg:w-9/12 m-auto '>
                 <h1 className='text-4xl font-bold my-10 text-center'>Service Details</h1>
                     <div>
                         <div className='my-10'>
                             <div className="card lg:card-side backdrop-blur-sm bg-white/30 shadow-3xl">
-                            <figure className='w-96 pl-5'><img src={img} alt="Album"/></figure>
-                            <div className="card-body w-1/2">
+                            <figure className='w-auto lg:w-96 p-0 lg:pl-5'><img src={img} alt="Album"/></figure>
+                            <div className="card-body w-full lg:w-1/2">
                                 <div>
                                     <h2 className="card-title text-2xl font-bold">{title}</h2>
                                     <p>{about}</p>
@@ -76,6 +87,7 @@ const SerDetails = () => {
                                 <textarea name="message" className="textarea textarea-bordered backdrop-blur-sm bg-white/30" placeholder="Review Please" required></textarea>
                                 </div>
                                 <button className='btn btn-info mb-10' type='submit'>Review</button>
+                                <ToastContainer/>
                             </form>
                         
                         </>

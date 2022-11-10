@@ -12,8 +12,7 @@ const ReviewList = () => {
     }, []);
     return (
         <div>
-            <h1>Review List</h1>
-            <div className="overflow-x-auto w-full text-black">
+            <div className="overflow-x-auto w-11/12 m-auto text-black">
             <table className="table w-full">
                 <thead>
                 <tr>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
-import ServiceCard from '../Services/ServiceCard';
+import moment from 'moment';
 import UserService from './UserService';
 
 const AddServices = () => {
@@ -22,6 +22,7 @@ const AddServices = () => {
             price,
             img,
             customer: name,
+            time:moment().format('LT'),
             about,
             email
         }

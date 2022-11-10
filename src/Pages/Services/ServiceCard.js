@@ -1,4 +1,5 @@
-
+import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
@@ -20,7 +21,13 @@ const ServiceCard = ({service}) => {
             {
                 services.map(service =>
                 <div className="card w-80 md:w-80 lg:w-96 backdrop-blur-sm bg-white/30 shadow-xl" key={service._id}>
-                <figure><img src={service.img} alt="Shoes" /></figure>
+                <figure>
+                <PhotoProvider>
+                <PhotoView src={service.img}>
+                    <img src={service.img} alt="Shoes" />
+                </PhotoView>
+                </PhotoProvider>
+                </figure>
                 <div className="card-body">
                     <h2 className="card-title">{service.title}</h2>
                     <p>{service.customer}</p>

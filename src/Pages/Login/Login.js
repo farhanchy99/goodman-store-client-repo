@@ -2,8 +2,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faGithub } from '@fortawesome/free-brands-svg-icons'
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import login from '../../assets/squad.jpg'
-import swal from 'sweetalert';
+import login from '../../assets/squad.jpg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
@@ -25,6 +26,16 @@ const Login = () => {
             setError("");
         })
         .catch((error) => {
+            toast.error('Login Unsuccessful', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
             setError(error);
         });
     }
@@ -37,18 +48,52 @@ const Login = () => {
         logIn(email, password)
         .then(result => {
             const user = result.user;
+            const currentUser = {
+                email: user.email
+            }
             console.log(user);
             setError('');
             form.reset();
             navigate(from, {replace: true});
-            swal({
-                title: "Successfully Registered",
-                button: "OK",
-                icon: "success"
-              });
+            toast.success('Log In Successfully',{
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+
+            fetch('http://localhost:5000/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                // local storage is the easiest but not the best place to store jwt token
+                localStorage.setItem('genius-token', data.token);
+                navigate(from, { replace: true });
+            });
+
         })
         .catch(error => {
             console.error(error);
+            toast.error('Login Unsuccessful!!!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
             setError(error.message);
         })
     }
@@ -62,7 +107,7 @@ const Login = () => {
                         <img src={login} alt="" className='rounded-r-lg'/>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm">
-                    <form onSubmit={handleSubmit} className="card-body">
+                    <form onSubmit={handleSubmit} className="card-body pb-0">
                     <h1 className="text-5xl font-bold">Login now!</h1>
                     <p>To Join With ME!</p>
                         <div className="form-control">
@@ -82,6 +127,7 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-info text-white">Login</button>
+                            <ToastContainer/>
                             <p className='text-rose-700 mt-5'>{error}</p>
                         </div>
                         <p className='text-center text-lg text-bold'>OR</p>
