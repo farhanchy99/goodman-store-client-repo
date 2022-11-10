@@ -6,7 +6,7 @@ const Services = () => {
     const cards = useLoaderData()
     console.log(cards)
     return (
-        <div>
+        <div className='container'>
             <h1 className='text-4xl font-bold my-10 text-center'>Services: {cards.length}</h1>
             <div className=''>
                 <ServiceCard></ServiceCard>

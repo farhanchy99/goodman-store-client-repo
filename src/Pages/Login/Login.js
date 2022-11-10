@@ -53,7 +53,7 @@ const Login = () => {
         <div>
             <div>
                 <div className="hero min-h-screen my-10">
-                <div className="hero-content flex-col lg:flex-row-reverse w-1/2 backdrop-blur-sm bg-white/30 p-0 shadow-2xl rounded-lg">
+                <div className="hero-content flex-col lg:flex-row-reverse w-4/5 lg:w-1/2 backdrop-blur-sm bg-white/30 p-0 shadow-2xl rounded-lg">
                     <div className="text-center lg:text-left">
                         <img src={login} alt="" className='rounded-r-lg'/>
                     </div>

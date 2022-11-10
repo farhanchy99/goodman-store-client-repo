@@ -58,8 +58,8 @@ const Header = () => {
                         {user?.photoURL ? 
                         
                         <>
-                            <img src={user?.photoURL} alt="photoURL" className='w-8 lg:w-10 rounded-full lg:m-5'/>
-                            <button onClick={handleLogOut} className='btn hidden bg-blue-600 lg:block shadow-lg'>Log Out</button>
+                            <img src={user?.photoURL} alt="user" className='w-8 lg:w-10 rounded-full hidden lg:block lg:m-5'/>
+                            <button onClick={handleLogOut} className='btn bg-blue-600 shadow-lg'>Log Out</button>
                         
                         </>
                         : 
