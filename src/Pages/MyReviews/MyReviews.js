@@ -4,26 +4,14 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const MyReviews = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);
     
     useEffect( () =>{
-        fetch(`http://localhost:5000/myreviews?email=${user?.email}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('genius-token')}`
-            }
-        })
-
-        .then(res => {
-            if (res.status === 401 || res.status === 403) {
-                return logOut();
-            }
-            return res.json();
-        })
-        .then(data => {
-            setMyReviews(data);
-        })
-    }, [user?.email, logOut]);
+        fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
+        .then(res =>res.json())
+        .then(data => setMyReviews(data))
+    }, [user?.email]);
 
     const handleDelete = id =>{
         const agree = window.confirm (`Are you sure want to delete?`)

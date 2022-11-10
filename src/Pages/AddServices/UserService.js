@@ -7,20 +7,9 @@ const UserService = () => {
     const [userService, setUserService] = useState([]);
     
     useEffect( () =>{
-        fetch(`http://localhost:5000/myservices?email=${user?.email}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('genius-token')}`
-            }
-        })
-        .then(res => {
-            if (res.status === 401 || res.status === 403) {
-                return logOut();
-            }
-            return res.json();
-        })
-        .then(data => {
-            setUserService(data);
-        })
+        fetch(`http://localhost:5000/myservices?email=${user?.email}`)
+        .then(res =>res.json())
+        .then(data => setUserService(data))
     }, [user?.email, logOut]);
     return (
         <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center my-10'>

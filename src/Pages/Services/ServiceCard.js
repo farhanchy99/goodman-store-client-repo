@@ -1,11 +1,9 @@
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
-const ServiceCard = ({service}) => {
-    const { user } = useContext(AuthContext);
+const ServiceCard = () => {
     const [services, setServices] = useState([]);
     
     useEffect( () =>{
@@ -13,7 +11,7 @@ const ServiceCard = ({service}) => {
         .then(res =>res.json())
         .then(data => setServices(data))
         console.log(services)
-    }, []);
+    }, [services]);
 
     
     return (

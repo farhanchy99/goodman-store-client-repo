@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const ReviewList = () => {
     const [reviewList, setReviewList] = useState([]);
     const{_id} = useLoaderData();
+    const { logOut } = useContext(AuthContext);
     
     useEffect( () =>{
         fetch(`http://localhost:5000/reviews?service=${_id}`)
         .then(res =>res.json())
         .then(data => setReviewList(data))
-    }, []);
+    }, [_id, logOut]);
+
     return (
         <div>
             <div className="overflow-x-auto w-11/12 m-auto text-black">
