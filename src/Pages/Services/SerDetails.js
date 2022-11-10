@@ -5,10 +5,12 @@ import moment from 'moment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReviewList from '../Shared/ReviewList/ReviewList';
+import useTitle from '../../Hooks/useTitle';
 
 const SerDetails = () => {
     const{_id, title, price, about, img} = useLoaderData();
     const {user} = useContext(AuthContext)
+    useTitle('Services Details');
 
     const handleReview = event =>{
         event.preventDefault();
@@ -17,6 +19,7 @@ const SerDetails = () => {
         const email = user?.email || 'unregistered';
         const img = user?.photoURL || 'unregistered';
         const message = form.message.value;
+
 
         const review = {
             service: _id,
