@@ -20,9 +20,13 @@ const Login = () => {
         providerLogin(googleProvider)
         .then(result=>{
             const user = result.user;
+            navigate(from, {replace: true});
             console.log(user);
+            setError("");
         })
-        .catch(error => console.error(error))
+        .catch((error) => {
+            setError(error);
+        });
     }
 
     const handleSubmit = event =>{
@@ -82,10 +86,13 @@ const Login = () => {
                         </div>
                         <p className='text-center text-lg text-bold'>OR</p>
                         <div>
+                        
+                    </div>
+                    </form>
+                    <div className='card-body pt-0'>
                         <button onClick={handleGoogleSignIn} className="btn btn-warning w-full mb-5 text-white"><FontAwesomeIcon icon={faGoogle} className="mr-5"></FontAwesomeIcon> Google</button>
                         <button className="btn btn-success w-full text-white"><FontAwesomeIcon icon={faGithub} className="mr-5"></FontAwesomeIcon> Github</button>
                     </div>
-                    </form>
                     </div>
                 </div>
                 </div>

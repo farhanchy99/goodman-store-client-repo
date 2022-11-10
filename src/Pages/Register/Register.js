@@ -26,7 +26,7 @@ const Register = () => {
             console.log(user);
             form.reset();
             setError('');
-            navigate("/login");
+            navigate("/");
             swal({
                 title: "Registered Successfully",
                 button: "OK",

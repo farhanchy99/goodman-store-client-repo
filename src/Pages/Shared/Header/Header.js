@@ -22,9 +22,20 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="nav menu-compact dropdown-content mt-3 p-2 shadow backdrop-blur-sm bg-white/30 rounded-box w-52 text-center">
                         <li className='mb-5'><NavLink to='/' className={({isActive})=> isActive ? 'active' : undefined} end>Home</NavLink></li>
-                        <li className='mb-5'><NavLink to='/services'>services</NavLink></li>
-                        <li className='mb-5'><NavLink to='/faq'>FAQ</NavLink></li>
-                        <li className='mb-5'><NavLink to='/blog'>Blog</NavLink></li>
+                        <li className='mb-5'><NavLink to='/services'>Services</NavLink></li>
+                        <li className='mb-5'><NavLink to='/blogs'>Blogs</NavLink></li>
+                        {user?.photoURL ? 
+                        
+                        <>
+                        <li className='mb-5'><NavLink to='/addservices'>Add Services</NavLink></li>
+                        <li className='mb-5'><NavLink to='/reviewslist'>My Reviews</NavLink></li>
+                        
+                        </>
+                        : 
+                        <>
+                        
+                        </>
+                        }
                     </ul>
                     </div>
                     <NavLink className='text-2xl text-gray-900 font-semibold flex items-center' to='/'>
